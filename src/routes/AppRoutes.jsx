@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
 
 import ProtectedRoute from "./ProtectedRoute";
+import AddTemple from "../pages/AddTemple/AddTemple";
 
 const AppRoutes = () => {
   return (
@@ -29,6 +30,7 @@ const AppRoutes = () => {
           }
         >
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/add-temple" element={<AddTemple />} />
         </Route>
 
       </Routes>

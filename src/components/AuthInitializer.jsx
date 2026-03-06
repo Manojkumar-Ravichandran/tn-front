@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import useAuthStore from "../store/authStore";
-import { getProfile } from "../api/authApi";
+import useAuthStore from "../features/auth/authStore";
+import { getProfile } from "../features/auth/authApi";
 
 const AuthInitializer = ({ children }) => {
   const token = useAuthStore((state) => state.token);
