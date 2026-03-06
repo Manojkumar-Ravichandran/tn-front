@@ -1,29 +1,24 @@
 import { Outlet } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 const ContributorLayout = () => {
-  return (
-    <div className="flex h-screen">
+    return (
+        <div className="flex min-h-screen font-sans">
+            {/* Horizontal Top Header */}
+            <Header />
 
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white p-5">
-        <h2 className="text-xl font-bold mb-6">
-          Contributor
-        </h2>
+            {/* Vertical Sidebar */}
+            <Sidebar />
 
-        <ul className="space-y-3">
-          <li>Dashboard</li>
-          <li>Add Temple</li>
-          <li>My Temples</li>
-        </ul>
-      </aside>
-
-      {/* Content */}
-      <main className="flex-1 p-6 bg-gray-100">
-        <Outlet />
-      </main>
-
-    </div>
-  );
+            {/* Main Scrollable Content */}
+            <main className="main-content main-content-sidebar flex flex-col w-full">
+                <div className="p-8">
+                    <Outlet />
+                </div>
+            </main>
+        </div>
+    );
 };
 
 export default ContributorLayout;

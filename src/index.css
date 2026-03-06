@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+@theme {
+    /* Site Specific Theme Colors mapped to CSS variables */
+    --color-primary: #ec7f13;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-border-theme: var(--border-theme);
+    --color-secondary-bg: var(--secondary-bg);
+    --color-sidebar-bg: var(--sidebar-bg);
+
+    /* Additional tokens */
+    --header-height: 64px;
+    --sidebar-width: 85px;
+}
+
+:root {
+    /* Light Mode Palette */
+    --background: #ffffff;
+    --foreground: #000000;
+    --border-theme: #e5e7eb;
+    --secondary-bg: #f9fafb;
+
+    /* Sidebar should be white in light mode */
+    --sidebar-bg: #ffffff;
+}
+
+.dark {
+    /* Dark Mode Palette */
+    --background: #0a0a0a;
+    --foreground: #ffffff;
+    --border-theme: #1f2937;
+    --secondary-bg: #141414;
+
+    /* Sidebar should be the same as background in dark mode */
+    --sidebar-bg: #0a0a0a;
+}
+
+@layer base {
+    body {
+        @apply antialiased bg-background text-foreground transition-colors duration-300;
+    }
+}
+
+@layer components {
+
+    /* Layout components using theme variables */
+    .header-fixed {
+        @apply fixed top-0 left-0 right-0 z-[100] bg-background border-b border-border-theme flex items-center px-6 shadow-sm transition-colors duration-300;
+        height: var(--header-height);
+    }
+
+    .sidebar-fixed {
+        @apply fixed left-0 z-40 bg-sidebar-bg border-r border-border-theme overflow-y-auto transition-all duration-300;
+        top: var(--header-height);
+        bottom: 0;
+        width: var(--sidebar-width);
+    }
+
+    .main-content {
+        @apply flex-1 transition-all duration-300;
+        padding-top: var(--header-height);
+    }
+
+    .main-content-sidebar {
+        padding-left: var(--sidebar-width);
+    }
+}
