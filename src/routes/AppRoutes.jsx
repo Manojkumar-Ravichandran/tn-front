@@ -8,7 +8,7 @@ import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
 
 import ProtectedRoute from "./ProtectedRoute";
-import AddTemple from "../pages/AddTemple/AddTemple";
+import AddTemple from "../pages/Temple/Temple";
 
 const AppRoutes = () => {
   return (
