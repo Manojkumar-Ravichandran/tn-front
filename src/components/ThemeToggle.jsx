@@ -35,7 +35,7 @@ const ThemeToggle = () => {
         bg-background border-border-theme hover:bg-secondary-bg text-foreground
         hover:scale-105 active:scale-95
       `}
-            title={`Theme Setting: ${theme.charAt(0).toUpperCase() + theme.slice(1)} (Matches: ${resolvedTheme})`}
+            title={`Theme Setting: ${(theme || "system").charAt(0).toUpperCase() + (theme || "system").slice(1)} (Matches: ${resolvedTheme})`}
             aria-label="Toggle theme"
         >
             {getIcon()}

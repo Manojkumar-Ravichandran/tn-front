@@ -31,8 +31,8 @@ const AppRoutes = () => {
         >
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/add-temple" element={<AddTemple />} />
+          <Route path="/add_temple" element={<AddTemple />} />
         </Route>
-
       </Routes>
     </BrowserRouter>
   );

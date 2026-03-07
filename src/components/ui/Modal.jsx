@@ -2,36 +2,37 @@ import React from "react";
 import { X } from "lucide-react";
 
 /**
- * A theme-aware Modal component.
+ * A theme-aware and responsive Modal component.
  */
 const Modal = ({ isOpen, onClose, title, children }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[1000] p-4 transition-all duration-300">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-start md:items-center justify-center z-[1000] p-3 md:p-6 transition-all duration-500 overflow-y-auto">
+
             <div
-                className="bg-background border border-border-theme rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden shadow-2xl transform transition-all animate-in fade-in zoom-in duration-200"
+                className="relative bg-background border border-border-theme rounded-3xl w-full max-w-2xl shadow-2xl flex flex-col my-auto max-h-[95vh] overflow-hidden transition-all duration-300 transform"
             >
                 {/* Header */}
-                <div className="flex justify-between items-center p-5 border-b border-border-theme">
-                    <h2 className="text-xl font-bold text-foreground">{title}</h2>
+                <header className="flex justify-between items-center px-6 py-4 border-b border-border-theme bg-secondary-bg/20">
+                    <h2 className="text-lg md:text-xl font-black text-foreground tracking-tight">{title}</h2>
                     <button
                         onClick={onClose}
-                        className="p-1 rounded-full hover:bg-secondary-bg text-foreground/50 hover:text-foreground transition-colors"
+                        className="p-1.5 rounded-full hover:bg-foreground/10 text-foreground/40 hover:text-foreground transition-all active:scale-90"
                     >
-                        <X className="w-6 h-6" />
+                        <X className="w-5 h-5 md:w-6 md:h-6" />
                     </button>
-                </div>
+                </header>
 
-                {/* Content */}
-                <div className="p-6 overflow-y-auto">
+                {/* Content Area */}
+                <div className="px-4 py-6 md:p-8 overflow-y-auto scrollbar-thin scrollbar-thumb-foreground/10">
                     {children}
                 </div>
             </div>
 
-            {/* Overlay click to close */}
+            {/* Clickable Backdrop */}
             <div
-                className="absolute inset-0 -z-10"
+                className="absolute inset-0 -z-10 cursor-default"
                 onClick={onClose}
             />
         </div>
