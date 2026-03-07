@@ -16,10 +16,12 @@ const Sidebar = () => {
 
     const menuItems = [
         { name: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
-        { name: "Temples", icon: Castle, path: "/add-temple" },
+        { name: "Temples", icon: Castle, path: "/temples" },
         { name: "Festivals", icon: Calendar, path: "/festivals" },
         { name: "Profile", icon: User, path: "/profile" },
         { name: "Report", icon: FileText, path: "/report" },
+        { name: "Masters", icon: FileText, path: "/masters" },
+        { name: "Contributor", icon: User, path: "/contributor" },
     ];
 
     return (

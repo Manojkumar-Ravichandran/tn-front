@@ -164,6 +164,7 @@ const DataTable = ({
                     <td className="px-4 py-3 md:py-4 text-right">
                       <div className="flex justify-end gap-1 opacity-40 group-hover/row:opacity-100 transition-all">
                         {actions.map((action, i) => {
+                          if (action.show && !action.show(row)) return null;
                           const IconComp = action.icon;
                           return (
                             <button
@@ -245,8 +246,8 @@ const DataTable = ({
                     key={pageNum}
                     onClick={() => setPage(pageNum)}
                     className={`w-8 h-8 flex items-center justify-center rounded-xl text-xs font-black transition-all ${safePage === pageNum
-                        ? "bg-primary text-white shadow-lg shadow-primary/20 scale-105"
-                        : "text-foreground/40 hover:text-foreground hover:bg-foreground/5"
+                      ? "bg-primary text-white shadow-lg shadow-primary/20 scale-105"
+                      : "text-foreground/40 hover:text-foreground hover:bg-foreground/5"
                       }`}
                   >
                     {pageNum}
