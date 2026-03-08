@@ -13,6 +13,9 @@ import Master from "../pages/Master/Master";
 import Contributor from "../pages/Contributor/Contributor";
 import SetPassword from "../pages/Login/SetPassword";
 import TempleDetail from "../pages/Temple/TempleDetail";
+import Festivals from "../pages/Festivals/Festivals";
+import District from "../pages/District/District";
+import Deities from "../pages/Deities/Deities";
 
 const AppRoutes = () => {
   return (
@@ -23,8 +26,11 @@ const AppRoutes = () => {
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/temples/:slug" element={<TempleDetail />} />
+          <Route path="/festivals" element={<Festivals />} />
           <Route path="/login" element={<Login />} />
           <Route path="/set-password" element={<SetPassword />} />
+          <Route path="/districts" element={<District />} />
+          <Route path="/deities" element={<Deities />} />
         </Route>
 
         {/* Protected Pages */}

@@ -38,9 +38,12 @@ const Home = () => {
               Start Contributing
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <button className="flex items-center gap-2.5 px-10 py-5 bg-secondary-bg border border-border-theme text-foreground rounded-[2rem] font-black text-sm hover:bg-secondary-bg/80 transition-all active:scale-95">
+            <Link
+              to="/festivals"
+              className="flex items-center gap-2.5 px-10 py-5 bg-secondary-bg border border-border-theme text-foreground rounded-[2rem] font-black text-sm hover:bg-secondary-bg/80 transition-all active:scale-95"
+            >
               Explore Temples
-            </button>
+            </Link>
           </div>
         </div>
       </section>

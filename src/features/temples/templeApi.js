@@ -24,6 +24,16 @@ export const getPublicTemples = async () => {
   return res.data.data?.temples || [];
 };
 
+export const getTemplesByDistrict = async (districtId) => {
+  const res = await API.get(`/temples${districtId ? `?district=${districtId}` : ''}`);
+  return res.data.data?.temples || [];
+};
+
+export const getTemplesByDeity = async (deityId) => {
+  const res = await API.get(`/temples${deityId ? `?deity=${deityId}` : ''}`);
+  return res.data.data?.temples || [];
+};
+
 export const getTempleBySlug = async (slug) => {
   const res = await API.get(`/temples/${slug}`);
   // Backend returns: { success: true, data: { ...templeObject } }
