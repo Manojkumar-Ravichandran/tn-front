@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { MapPin, ChevronLeft, ChevronRight, ArrowRight, Search, ImageOff } from 'lucide-react';
 import { getDistricts } from '../../features/temples/masterApi';
 import { getTemplesByDistrict } from '../../features/temples/templeApi';
+import SEO from '../../components/SEO';
 
 const BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace('/api/v1', '');
 
@@ -12,8 +13,8 @@ const DistrictPill = ({ district, isActive, onClick }) => (
     <button
         onClick={onClick}
         className={`flex-shrink-0 flex items-center gap-2.5 px-5 py-3 rounded-2xl border text-sm font-bold transition-all duration-200 active:scale-95 whitespace-nowrap ${isActive
-                ? 'bg-primary text-white border-primary shadow-lg shadow-primary/25 scale-[1.03]'
-                : 'bg-background text-foreground/60 border-border-theme hover:border-primary/40 hover:text-foreground hover:bg-secondary-bg/40'
+            ? 'bg-primary text-white border-primary shadow-lg shadow-primary/25 scale-[1.03]'
+            : 'bg-background text-foreground/60 border-border-theme hover:border-primary/40 hover:text-foreground hover:bg-secondary-bg/40'
             }`}
     >
         <MapPin className={`w-4 h-4 ${isActive ? 'text-white' : 'text-primary/60'}`} />
@@ -120,6 +121,12 @@ const District = () => {
 
     return (
         <div className="min-h-screen bg-background">
+            <SEO
+                title="Explore Temples by District — Tamil Nadu"
+                description="Browse Hindu temples district-by-district across Tamil Nadu. Discover ancient sacred sites and spiritual heritage in every district of Tamil Nadu."
+                keywords="Tamil Nadu districts, temple by district, Chennai temples, Madurai temples, Thanjavur temples, Coimbatore temples"
+                canonical="/districts"
+            />
 
             {/* ── HERO ── */}
             <section className="pt-24 pb-8">

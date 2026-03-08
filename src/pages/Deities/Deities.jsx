@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Sparkles, MapPin, ChevronLeft, ChevronRight, ArrowRight, Search, ImageOff } from 'lucide-react';
 import { getDeities } from '../../features/temples/masterApi';
 import { getTemplesByDeity } from '../../features/temples/templeApi';
+import SEO from '../../components/SEO';
 
 const BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace('/api/v1', '');
 
@@ -12,8 +13,8 @@ const DeityPill = ({ deity, isActive, onClick }) => (
     <button
         onClick={onClick}
         className={`flex-shrink-0 flex items-center gap-2.5 px-5 py-3 rounded-2xl border text-sm font-bold transition-all duration-200 active:scale-95 whitespace-nowrap ${isActive
-                ? 'bg-purple-500 text-white border-purple-500 shadow-lg shadow-purple-500/25 scale-[1.03]'
-                : 'bg-background text-foreground/60 border-border-theme hover:border-purple-400/40 hover:text-foreground hover:bg-secondary-bg/40'
+            ? 'bg-purple-500 text-white border-purple-500 shadow-lg shadow-purple-500/25 scale-[1.03]'
+            : 'bg-background text-foreground/60 border-border-theme hover:border-purple-400/40 hover:text-foreground hover:bg-secondary-bg/40'
             }`}
     >
         <Sparkles className={`w-4 h-4 ${isActive ? 'text-white' : 'text-purple-500/60'}`} />
@@ -115,6 +116,12 @@ const Deities = () => {
 
     return (
         <div className="min-h-screen bg-background">
+            <SEO
+                title="Explore Temples by Deity — Hindu Gods & Goddesses"
+                description="Discover temples dedicated to Hindu gods and goddesses across Tamil Nadu. Find temples for Shiva, Vishnu, Murugan, Amman, Ganesh and more."
+                keywords="Hindu deities, Shiva temples, Vishnu temples, Murugan temples, Amman temples, Ganesh temples, Tamil Nadu deity temples"
+                canonical="/deities"
+            />
 
             {/* ── HERO ── */}
             <section className="pt-24 pb-8">

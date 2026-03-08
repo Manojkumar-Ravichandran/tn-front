@@ -9,6 +9,7 @@ import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import shadowIcon from 'leaflet/dist/images/marker-shadow.png';
 import { getTempleBySlug } from '../../features/temples/templeApi';
+import SEO from '../../components/SEO';
 
 // Fix Leaflet default marker icons in Vite
 delete L.Icon.Default.prototype._getIconUrl;
@@ -59,8 +60,20 @@ const TempleDetail = () => {
     // Format coordinate data
     const coords = temple?.location?.coordinates || [];
 
+    const seoDescription = temple?.description
+        ? temple.description.slice(0, 160)
+        : `Discover ${temple?.name} — an ancient temple dedicated to ${temple?.deity?.name || 'the divine'} in ${temple?.district?.name || 'Tamil Nadu'}. Explore its history, timings, festivals, and more.`;
+    const seoImage = headerImage || undefined;
+
     return (
         <div className="min-h-screen bg-background pb-20">
+            <SEO
+                title={`${temple?.name} — ${temple?.district?.name || 'Tamil Nadu'}`}
+                description={seoDescription}
+                keywords={`${temple?.name}, ${temple?.deity?.name || ''} temple, ${temple?.district?.name || ''} temple, Tamil Nadu temples`}
+                image={seoImage}
+                canonical={`/temples/${slug}`}
+            />
 
             {/* Full Screen Image Viewer Modal */}
             {selectedImage && (

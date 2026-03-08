@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { MapPin, ChevronRight, ArrowRight, Calendar, Sparkles, Castle } from 'lucide-react';
 import { getPublicTemples } from '../../features/temples/templeApi';
+import SEO from '../../components/SEO';
 
 const Home = () => {
   const { data: temples = [], isLoading } = useQuery({
@@ -14,6 +15,12 @@ const Home = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <SEO
+        title="Heritage of Tamil Nadu, Digitally Reimagined"
+        description="Explore thousands of ancient Hindu temples across Tamil Nadu. A community-driven initiative to document, preserve, and showcase the divine architectural marvels of Tamil Nadu's rich spiritual heritage."
+        keywords="Tamil Nadu temple heritage, ancient temples, gopuram, Dravidian architecture, temple directory"
+        canonical="/"
+      />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-primary/5 blur-[120px] rounded-full -z-10"></div>

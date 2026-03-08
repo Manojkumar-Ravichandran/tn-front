@@ -4,6 +4,7 @@ import { loginSchema } from "../../features/auth/authSchema";
 import { loginUser } from "../../features/auth/authApi";
 import useAuthStore from "../../features/auth/authStore";
 import { useNavigate } from "react-router-dom";
+import SEO from "../../components/SEO";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,6 +30,12 @@ export default function Login() {
 
   return (
     <div className="flex items-center justify-center py-20">
+      <SEO
+        title="Contributor Login"
+        description="Login to the TN Temples contributor portal to manage and document Tamil Nadu temple data."
+        canonical="/login"
+        noIndex={true}
+      />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-background border border-border-theme p-8 shadow-xl rounded-2xl w-full max-w-md transition-all duration-300"

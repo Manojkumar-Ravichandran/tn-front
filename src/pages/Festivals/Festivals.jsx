@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ChevronLeft, ChevronRight, MapPin, Calendar, Filter } from 'lucide-react';
 import { getFestivals } from '../../features/temples/masterApi';
 import { getPublicTemples } from '../../features/temples/templeApi';
+import SEO from '../../components/SEO';
 
 /* ─── Helpers ─── */
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -74,6 +75,12 @@ const Festivals = () => {
 
     return (
         <div className="min-h-screen bg-background">
+            <SEO
+                title="Spiritual Calendar — Tamil Nadu Temple Festivals"
+                description="Discover sacred temple festivals and divine celebrations across Tamil Nadu. Browse the spiritual calendar and never miss an important festival event."
+                keywords="Tamil Nadu festivals, temple festivals, Panguni Uthiram, Chithirai, Aadi Perukku, Hindu festivals, sacred events"
+                canonical="/festivals"
+            />
 
             {/* ── BREADCRUMB + HEADER ── */}
             <div className="pt-24 pb-0 container mx-auto px-6 max-w-7xl">
