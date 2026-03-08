@@ -12,6 +12,7 @@ import AddTemple from "../pages/Temple/Temple";
 import Master from "../pages/Master/Master";
 import Contributor from "../pages/Contributor/Contributor";
 import SetPassword from "../pages/Login/SetPassword";
+import TempleDetail from "../pages/Temple/TempleDetail";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         {/* Public Pages */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/temples/:slug" element={<TempleDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/set-password" element={<SetPassword />} />
         </Route>

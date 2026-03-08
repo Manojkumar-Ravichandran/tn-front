@@ -7,11 +7,9 @@ const PublicLayout = () => {
             {/* Common Header */}
             <Header />
 
-            {/* Main Content Area */}
+            {/* Main Content Area - pages manage their own widths */}
             <main className="main-content flex-1">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                    <Outlet />
-                </div>
+                <Outlet />
             </main>
         </div>
     );

@@ -24,6 +24,12 @@ export const getPublicTemples = async () => {
   return res.data.data?.temples || [];
 };
 
+export const getTempleBySlug = async (slug) => {
+  const res = await API.get(`/temples/${slug}`);
+  // Backend returns: { success: true, data: { ...templeObject } }
+  return res.data.data;
+};
+
 export const approveTemple = async (id) => {
   const res = await API.patch(`/temples/${id}/approve`);
   return res.data.data;
