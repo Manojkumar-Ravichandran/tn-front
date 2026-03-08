@@ -25,14 +25,24 @@ L.Icon.Default.mergeOptions({
 });
 
 /**
- * Helper to capture map clicks
+ * Helper to capture map clicks and fix map size issue
  */
 const MapEvents = ({ onLocationSelect }) => {
-  useMapEvents({
+  const map = useMapEvents({
     click(e) {
       onLocationSelect(e.latlng.lat, e.latlng.lng);
     },
   });
+
+  useEffect(() => {
+    // Rapidly invalidating size multiple times over 1 second guarantees 
+    // the map matches its container perfectly after all CSS transitions finish.
+    const intervals = [100, 300, 500, 800, 1000];
+    const timers = intervals.map(t => setTimeout(() => map.invalidateSize(), t));
+
+    return () => timers.forEach(clearTimeout);
+  }, [map]);
+
   return null;
 };
 

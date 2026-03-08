@@ -1,29 +1,35 @@
 import API from "../../api/axios";
 
 export const getMyTemples = async () => {
-
   const res = await API.get("/temples/my-temples");
-
   return res.data.data.temples;
-
 };
 
-export const getAdminTemples = async () => {
-
-  const res = await API.get("/temples/admin-temples");
-
+export const getAdminTemples = async (status = "pending") => {
+  const res = await API.get(`/temples/admin-temples${status ? `?status=${status}` : ""}`);
   return res.data.data.temples;
-
 };
 
 export const createTemple = async (formData) => {
-
   const res = await API.post("/temples", formData, {
     headers: {
       "Content-Type": "multipart/form-data"
     }
   });
-
   return res.data.data;
+};
 
+export const getPublicTemples = async () => {
+  const res = await API.get("/temples");
+  return res.data.data?.temples || [];
+};
+
+export const approveTemple = async (id) => {
+  const res = await API.patch(`/temples/${id}/approve`);
+  return res.data.data;
+};
+
+export const rejectTemple = async (id, reason) => {
+  const res = await API.patch(`/temples/${id}/reject`, { reason });
+  return res.data.data;
 };

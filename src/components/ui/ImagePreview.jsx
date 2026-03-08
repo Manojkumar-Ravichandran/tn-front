@@ -5,7 +5,7 @@ import { Trash2, Maximize2 } from "lucide-react";
  * Now includes a clickable overlay for gallery view.
  */
 const ImagePreview = ({ src, className = "w-16 h-16", onRemove, onClick, isLocal = false }) => {
-  const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace('/api/v1', '');
 
   // Create preview URL
   const displayUrl = isLocal && src instanceof File

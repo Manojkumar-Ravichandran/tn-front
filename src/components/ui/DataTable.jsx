@@ -16,6 +16,7 @@ const DataTable = ({
   loading = false,
   actions = null,
   searchable = true,
+  filterNode = null,
   pagination = true,
   pageSize = 5,
   title = "Data Grid"
@@ -110,10 +111,13 @@ const DataTable = ({
               />
             </div>
           )}
-          <button className="flex items-center gap-2 bg-secondary-bg border border-border-theme px-4 py-2 rounded-xl text-sm font-bold text-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-all active:scale-[0.98]">
-            <Filter className="w-4 h-4" />
-            <span className="hidden sm:inline">Filter</span>
-          </button>
+
+          {filterNode ? filterNode : (
+            <button className="flex items-center gap-2 bg-secondary-bg border border-border-theme px-4 py-2 rounded-xl text-sm font-bold text-foreground/60 hover:text-foreground hover:bg-foreground/5 transition-all active:scale-[0.98]">
+              <Filter className="w-4 h-4" />
+              <span className="hidden sm:inline">Filter</span>
+            </button>
+          )}
         </div>
       </header>
 
