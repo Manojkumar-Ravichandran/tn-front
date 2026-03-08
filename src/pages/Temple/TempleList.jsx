@@ -6,6 +6,7 @@ import ImagePreview from "../../components/ui/ImagePreview";
 import { MapPin, Eye, Pencil, Trash2, CheckCircle, XCircle, Filter } from "lucide-react";
 import useAuthStore from "../../features/auth/authStore";
 import toast from "react-hot-toast";
+import TemplePreviewModal from "./TemplePreviewModal";
 
 /**
  * Renders the table of user submissions.
@@ -16,6 +17,7 @@ const TempleList = () => {
   const isAdmin = user?.role === "Admin";
   const queryClient = useQueryClient();
   const [statusFilter, setStatusFilter] = useState("pending");
+  const [previewTemple, setPreviewTemple] = useState(null);
 
   // API State
   const {
@@ -69,7 +71,10 @@ const TempleList = () => {
       key: "name",
       title: "Temple Name",
       render: (row) => (
-        <div className="flex items-center gap-3 group/item">
+        <div
+          className="flex items-center gap-3 group/item cursor-pointer"
+          onClick={() => setPreviewTemple(row)}
+        >
           <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden bg-secondary-bg border border-border-theme shrink-0 shadow-sm group-hover/item:border-primary/20 transition-all">
             <ImagePreview src={row?.images?.[0]} className="w-full h-full object-cover" />
           </div>
@@ -136,6 +141,11 @@ const TempleList = () => {
   // Table Actions
   const actions = isAdmin ? [
     {
+      icon: Eye,
+      label: "View",
+      onClick: (row) => setPreviewTemple(row)
+    },
+    {
       icon: CheckCircle,
       label: "Approve",
       className: "text-green-500 hover:bg-green-500/10",
@@ -160,7 +170,7 @@ const TempleList = () => {
     {
       icon: Eye,
       label: "View",
-      onClick: (row) => console.log("view", row)
+      onClick: (row) => setPreviewTemple(row)
     },
     {
       icon: Pencil,
@@ -194,15 +204,21 @@ const TempleList = () => {
   );
 
   return (
-    <DataTable
-      title={isAdmin ? (statusFilter === "all" ? "All Submissions" : `${statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1)} Submissions`) : "My Submissions"}
-      columns={columns}
-      data={displayTemples}
-      loading={isLoading}
-      actions={actions}
-      pageSize={10}
-      filterNode={customFilterNode}
-    />
+    <>
+      <DataTable
+        title={isAdmin ? (statusFilter === "all" ? "All Submissions" : `${statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1)} Submissions`) : "My Submissions"}
+        columns={columns}
+        data={displayTemples}
+        loading={isLoading}
+        actions={actions}
+        pageSize={10}
+        filterNode={customFilterNode}
+      />
+      <TemplePreviewModal
+        temple={previewTemple}
+        onClose={() => setPreviewTemple(null)}
+      />
+    </>
   );
 };
 
